@@ -29,12 +29,28 @@ public class Staff {
 	@Column(nullable = false)
 	private String email;
 	
+	
+	public Staff() {}
+	
+	
+	public Staff(Long staffId, String employeeName, String employeeAddress, String nic, Long salary, int age,
+			String occupation, String email) {
+		super();
+		this.staffId = staffId;
+		this.employeeName = employeeName;
+		this.employeeAddress = employeeAddress;
+		this.nic = nic;
+		this.salary = salary;
+		this.age = age;
+		this.occupation = occupation;
+		this.email = email;
+	}
+
+
 	public Long getStaffId() {
 		return staffId;
 	}
-	public void setStaffId(Long staffId) {
-		this.staffId = staffId;
-	}
+	
 	public String getEmployeeName() {
 		return employeeName;
 	}
@@ -78,21 +94,6 @@ public class Staff {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-
-	
-
 }
 
 
-/*
- * 
- * Code, Employee Name, Employee Address, NIC, Salary,  Age, Occupation, E-mail
- */

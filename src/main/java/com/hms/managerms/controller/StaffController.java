@@ -20,28 +20,36 @@ public class StaffController {
 	@Autowired
 	private StaffRepository staffRepository;
 	
+	
+	// Add staff details (Create)
 	@PostMapping("/staff")
 	public Staff addStaff( @RequestBody Staff staff) {
-		
 		
 		return staffRepository.save(staff);
 	}
 	
+	
+	// Get Details of staff (Read)
 	@GetMapping("/staff")
 	public List<Staff> getAllStaff(){
 		
 		return staffRepository.findAll();
 	}
 	
+	// Delete Staff By Staff Id (Delete)
 	@DeleteMapping("/staff/{sid}")		
 	public void deleteStaff(@PathVariable("sid") Long sid) {
 		 staffRepository.deleteById(sid);
-		}
+		 
+	}
 	
+	
+	// Update Staff By staff id (Update)
 	@PutMapping("/staff/update/{sid}")
 	public Staff updateStaff(@PathVariable("sid") Long sid, @RequestBody Staff staffNew) {
 		
-		Staff staffDB= staffRepository.getById(sid);
+		var staffDB= new Staff();
+		 staffDB= staffRepository.getById(sid);
 		
 		if(staffNew.getEmployeeName() !=null) 
 			staffDB.setEmployeeName(staffNew.getEmployeeName());
@@ -57,6 +65,9 @@ public class StaffController {
 		if(staffNew.getAge() !=0) 
 			staffDB.setAge(staffNew.getAge());
 			
+		if(staffNew.getOccupation() !=null) 
+			staffDB.setOccupation(staffNew.getOccupation());
+		
 		if(staffNew.getEmail() !=null) 
 			staffDB.setEmail(staffNew.getEmail());
 		
